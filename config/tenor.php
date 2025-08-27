@@ -1,0 +1,5 @@
+<?php
+
+$API_KEY = 'YOUR TENOR API KEY HERE';
+
+?>
