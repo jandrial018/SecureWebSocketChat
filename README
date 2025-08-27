@@ -1,0 +1,37 @@
+how do i run this?
+
+**directories will need to be updated**
+
+
+
+
+you'll need to install workerman
+	composer require workerman/workerman
+	composer require workerman/channel
+
+
+starting webSocket
+	sudo php {your directory}/chatSocket2.php start
+
+to run in the background add '-d'
+	sudo php {your directory}/chatSocket2.php start -d
+
+check status
+	sudo php {your directory}/chatSocket2.php status
+
+to stop
+	sudo php {your directory}/chatSocket2.php stop
+
+restart
+	sudo php {your directory}/chatSocket2.php restart
+
+
+**you will need a https certificate for the socket for secure websocket chat**
+	you can use your websites certs or make a new one
+
+	if you do not have one or wish to not use one. you'll need to update both chat2.js and chatSocket2.php.
+	for chat2.js replace 'wss' with 'ws' when initializing the connection with the webSocket
+	for chatSocket2.php: try removing these lines and see if that works. 
+		 $wsWorker->transport = 'ssl'; 
+				and 
+		 $context

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+    <!-- <script src="firebase/firebase-app-compat.js"></script>
+  <script src="firebase/firebase-messaging-compat.js"></script> -->
+  <script src="popup.js"></script>
+</head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+
+    }
+    .tooltip .tooltiptext
+    {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        position: absolute;
+        z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        pointer-events: none;
+    }
+    .status
+    {
+      display:inline-block; 
+      width:10px; 
+      height:10px; 
+      border-radius:50%;
+      background-color:#f44336; 
+      border:2px solid #888;
+      vertical-align:middle;
+      /* margin: 0 1px 3px 2px; */
+    }
+    .textarea
+    {
+      max-width:635px; 
+      min-width:635px; 
+      margin: 10px 0 0 0;
+    }
+    .toolbar
+    {
+      max-width:635px; 
+      min-width:635px; 
+      margin: 10px 0 0 0;
+    }
+    .statusDiv
+    {
+      float: inline-start;
+    }
+    .statusLabel
+    {
+      font-size: 12px;
+      padding: 1px 0 0 2px;
+    }
+    .statusDiv
+    {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 0 0 3px 0;
+    }
+    .notifDiv
+    {
+
+      margin: 0 0 3px 0;
+    }
+</style>
+<body>
+  <div class="statusDiv">
+    <span id="statusLight" class="tooltip status" title="Disconnected">
+        <span id="statusText" class="tooltiptext">Disconnected</span>
+      </span>
+      <label class="statusLabel" id="label" for="statusLight">Status</label>
+</div>
+<div class="notifDiv">
+  <label>
+    <input type="checkbox" id="notificationsToggle">
+    Enable Notifications
+  </label>
+  </div>
+  <button id="clearBadgeBtn">Clear Badge</button>
+
+</body>
+</html>

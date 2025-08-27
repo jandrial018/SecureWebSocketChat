@@ -1,0 +1,18 @@
+1. in google chrome go to manage extentions
+2. enable developer mode
+3. click load unpacked
+4. select folder 'chrome extention' folder
+
+
+
+
+what does this extention do?
+
+it connects to the secure websocket chat's backend
+when there is a new message it will display the message as a popup and the extention icon will display number of unread messages
+
+
+what can i do with it?
+
+you can clear the unread message icon by left clicking the extention icon and clicking 'Clear Badge'
+you can uncheack 'Enable Notifications'. when disabled it will no longer give you a popup for new messages

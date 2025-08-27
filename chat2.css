@@ -1,0 +1,408 @@
+   /* codex: ignore */
+   
+   /* * {
+    box-sizing: border-box;
+    } */
+   body{
+      margin: 0;
+      background-color: #fff7eb;
+      /* background-color: #fcf4e7; */
+    }
+    button:focus
+    {
+      outline-offset: 3px;
+      outline: 3px solid #000000;
+    }
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: flex-start;
+      font-family: Arial, sans-serif;
+      justify-content: space-evenly;
+      gap: 12px;
+      margin: 20px 45px 0 45px;
+    }
+
+    .leftside
+    {
+      background-color: #f5f5f5bf;
+      flex: 1;
+      background-image: url(/images/socket_bg.png);
+      background-repeat: no-repeat;
+      background-position: 50% -10px;
+      background-size: 600px;
+    }
+    .leftside_in
+    {
+      background-color: #f5f5f5bf;
+      padding: 10px 20px;
+    }
+    .heading
+    {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6px;
+    }
+    .heading h2
+    {
+      width: 33.5%;
+    }
+    .countdown
+    {
+      font-weight: 600;
+      min-width: fit-content;
+    }
+    .countdown h3
+    {
+      width: fit-content;
+      padding: 0px 0px 0px 0px;
+      margin: 0 0 0 0;
+      text-decoration: underline;
+    }
+    .countdown span
+    {
+      background-color: #02020205;
+      padding: 0px 37px;
+      margin: 0;
+    }
+    .div_ext
+    {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 33%;
+    }
+    .ext
+    {
+      font-size: 14px;
+    }
+    .toolbar
+    {
+      padding: 0 6px;
+      margin: 10px 0 0 0;
+      display: flex;
+      flex-direction: row;
+      height: 20px;
+      justify-content: space-between;
+    }
+
+    .chat-container {
+      /* max-width: 600px; */
+      height: 400px;
+      margin: 15px 6px 15px;
+      background: #f4f4f400;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-container p{
+      margin: 0;
+      text-align: justify;
+       max-width: 700px;
+    }
+
+    .textarea_div
+    {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      margin: 10px 6px 10px;
+      width: 100%;
+    }
+    .textarea_div textarea
+    {
+      padding: 5px;
+      height: 24px;
+      min-height: 32px;
+      flex: 1;
+      border-radius: 2px;
+      background-color: #f5f5f5ab;
+    }
+    .btn_send
+    {
+      margin: 0 0px 0 3px;
+      height: 37px;
+      padding: 0 0px 0 5px;
+      border: none;
+      background-color: inherit;
+      flex: 0;
+    }
+    .btn_send img
+    {
+      width: 23px;
+      rotate: 319deg;
+    }
+
+    .sendBtn
+    {
+      border-radius: 2px;
+      border-style: solid;
+      border-color: black;
+    }
+
+    .btn_clear
+    {
+      border-radius: 2px;
+      border-style: solid;
+      border-color: black;
+      background-color: #ff0031;
+      color: #000000;
+    }
+    .displayNone
+    {
+      display: none !important;
+    }
+
+
+    .received {
+      align-self: flex-start;
+      /* max-width: 500px; */
+      max-width: 70%;
+    }
+   .sent {
+      align-self: flex-end;
+      /* max-width: 500px; */
+      max-width: 70%;
+    }
+   
+   .small {
+      font-size: 10px;
+      text-align: end;
+    }
+   .sent .small {
+      text-align: end;
+    }
+   .received .small {
+      text-align: start;
+    }
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 15px;
+      border-radius: 20px;
+      line-height: 1.4;
+      word-wrap: break-word;
+      background-color: #dcf8c6;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext
+    {
+        visibility: hidden;
+        /* width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1; */
+        width: max-content;
+        background-color: #3c3c3cf5;
+        color: #fff;
+        text-align: center;
+        padding: 8px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1;
+        left: 20px;
+        bottom: 20px;
+        font-size: .8em;
+        text-wrap: pretty;
+        text-shadow: 1px 1px 20px #5c5c5c;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        pointer-events: none;
+    }
+    .status
+    {
+      display:inline-block; 
+      width:18px; 
+      height:18px; 
+      border-radius:50%;
+      background-color:#f44336; 
+      border:2px solid #888;
+      vertical-align:middle;
+      margin: 0 1px 3px 2px;
+    }
+    .statusDiv
+    {
+      /* width: 210px; */
+      width: 295px;
+    }
+    .leanRight
+    {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+    }
+    .leanRight input
+    {
+      width: 110px;
+    }
+    .toDoList
+    {
+      border: solid;
+      /* width: 580px; */
+      padding: 19px 25px;
+      background-color: #f5f5f5a8;
+      overflow: overlay;
+      height: 599px;
+      flex: .35;
+      line-height: 1.2em;
+      border-color: #000000a1;
+    }
+
+    .divModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(128, 128, 128, 0.9); 
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+    }
+
+    #divSubmodal
+    {
+      width: 80vw;
+      height: 80vh;
+      max-width: 1000px;
+      max-height: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .divImg
+    {
+      padding: 2px;
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .divModal img
+    {
+      border: solid 2px;
+      padding: 2px;
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    @media only screen and (max-width: 1200px)
+    {
+      .body
+      {
+        flex-direction: column;
+      }
+      .toDoList
+      {
+        flex:1;
+        /* min-width: 300px; */
+        margin: auto;
+        max-width: 93%;
+        width: 100%;
+      }
+      .leftside
+      {
+        margin: auto;
+        /* width: 640px; */
+        width: 100%;
+      }
+  }
+  canvas
+  {
+    pointer-events: none;
+  }
+  #btn_fireworks
+  {
+    border-radius: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: #fa2b2b;
+    /* background-color: rebeccapurple; */
+    box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    z-index: 10;
+  }
+  .btn_animate
+  {
+    transition: transform 0.1s linear, box-shadow 0.1s linear;
+  }
+  .btn_animate:active
+  {
+    /* transform: translate(4px, 4px); */
+    transform: scale(1.08);
+    box-shadow: 0 0 0 rebeccapurple;
+  }
+  /* .btn_animate:focus
+  {
+    outline: none;
+  } */
+
+  .particle
+  {
+    --x: 0;
+    --y: 0;
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 5px;
+    width: 5px;
+    z-index: -1;
+  }
+
+  .particle.move
+  {
+    animation: move 500ms linear forwards;
+  }
+
+  @keyframes move
+  {
+    to
+    {
+      transform: translate(var(--x), var(--y));
+    }
+    95%
+    {
+      opacity: 1;
+    }
+    100%
+    {
+      opacity: 0;
+    }
+  }
+
+   @keyframes flashRed {
+    0%   { outline: 2.3px solid rgb(244, 29, 29) ;}
+    25%  { outline: 2.3px solid #ffb3b3 ; }
+    50%  { outline: 2.3px solid #de0a0a ; }
+    75%  { outline: 2.3px solid #ffb3b3 ; }
+    100% { outline: 2.3px solid #de0a0a ; }
+    /* 100% { outline: 1px solid rgb(118, 118, 118); } */
+  }
+
+  .flash-alert {
+    animation: flashRed 1s ease-in-out 0s 1;
+  }

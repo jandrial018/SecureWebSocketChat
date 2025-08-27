@@ -1,0 +1,311 @@
+<!-- codex: ignore -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Secure WebSocket Chat</title>
+  <meta charset="utf-8">
+  <!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin> -->
+  <!-- <link rel="icon" href="https://websocketchat.com/favicon.png" sizes="32x32">
+  <link rel="icon" href="https://websocketchat.com/favicon.png" sizes="192x192"> -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta property="og:title" content="Secure WebSocket Chat" />
+  <meta property="og:description" content="A secure, real-time chat application powered by WebSockets." />
+  <meta property="og:image" content="https://websocketchat.com/images/socket_bg.png" />
+  <meta property="og:url" content="https://websocketchat.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Secure WebSocket Chat" />
+  <meta name="twitter:description" content="A secure, real-time chat application powered by WebSockets." />
+  <meta name="twitter:image" content="https://websocketchat.com/images/socket_bg.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="chat2.css" defer>
+<!-- <link rel="preload" href="/chat2.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/chat2.css"></noscript> -->
+  <!-- <link rel="preload" href="https://cdn.jsdelivr.net/dist/index.umd.js" as="script" crossorigin>
+   async  -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <img 
+  src="/images/socket_bg.png" 
+  alt="" 
+  fetchpriority="high" 
+  decoding="async" 
+  style="position:absolute; width:0; height:0; overflow:hidden; visibility:hidden;">
+
+  <div class="body">
+    <div class="leftside" fetchpriority="high">
+      <div class="leftside_in">
+        <div class="heading">
+          <h2>Secure WebSocket Chat</h2>
+          <div class="countdown displayNone">
+            <h3>Time Until 6PM</h3>
+            <span id="timer">00:00:00</span>
+          </div>
+          <div class="div_ext">
+            <a href="javascript:aboutMe();">About Me</a>
+            <a class="ext" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/19mrs6DOnwWgQT8YVOy8jx0zfeWerr-t0/view?usp=sharing">Get The Chrome Extension</a>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="statusDiv">    
+            <span id="statusLight" class="tooltip status" title="Connected" style="background-color: rgb(76, 175, 80);">
+              <span id="statusText" class="tooltiptext">Connected</span>
+            </span>
+            <span class="statusLabel" id="label">Connected</span>
+          </div>
+          <div>
+              <span>clients count:</span>
+              <span id="count">0</span>
+            </div>
+            <div class="leanRight">
+              <button class="tooltip btn_animate" id="btn_fireworks">Fireworks?
+                <span class="tooltiptext">launch fireworks</span>
+              </button>
+              <span class="tooltip">
+                <input type="text" name="name" autocomplete="given-name" placeholder="your Name" />
+              <span class="tooltiptext">A Display Name</span>
+              </span>
+            <span class="tooltip">
+              <a href="https://websocketchat.com/tenor.html" target="_blank">Gifs
+              <span class="tooltiptext">Search for gifs</span>
+              </a>
+            </span>
+            <button class="btn_clear btn_animate tooltip" onclick="clearMessage()">Clear
+              <span class="tooltiptext">ctrl/cmd + L</span>
+            </button>
+          </div> 
+        </div>
+      <div class="chat-container" id="chatContainer">
+
+      </div>
+      <div class="textarea_div">
+        <textarea type="text" class="textarea" id="message" tabindex="0" placeholder="Type a message..." ></textarea>
+        <button class="btn_send btn_animate tooltip" alt="send message" tabindex="0" onclick="sendMessage()">
+          <span class="tooltiptext">Send Message</span>
+          <img fetchpriority="high" alt="send button icon" src="https://websocketchat.com/images/sendIcon.png">
+        </button>
+      </div>
+    </div>
+  </div>
+<div class="toDoList">
+  <p>To Do List:</p>
+  <ol>
+    <li>
+      <s>User select Color Wheel</s>
+   </li>
+    <li>
+      gif/emoji integration button 
+   </li>
+    <li>
+      About me
+   </li>
+    <li>
+      <s>password</s>
+   </li>
+    <li>
+      prompt for username
+   </li>
+    <li>
+      when sending youtube videos, error appears in console due to browser's ad blocker
+   </li>
+    <li>
+      allow user to modify fireworks
+   </li>
+    <li>
+      trigger fireworks for other connected when someone launches fireworks
+   </li>
+    <li>
+      add additional features to browser extension / make it more appealing
+   </li>
+    <li>
+      organize and push everything to a public github repo
+   </li>
+    <li>
+      clear cookies button
+   </li>
+    <li>
+      reduce file size of background image
+   </li>
+    <li>
+      fail2ban is working, but Ban is being circumvented by DNS proxy. investigate
+   </li>
+    <li>
+      ReCapcha v3
+   </li>
+    <li>
+      encode/encrypt user ids to avoid id guessing and impostering 
+   </li>
+    <li>
+      ....
+   </li>
+    <li>
+      profit
+   </li>
+  </ol>
+
+  <p>Did Do List:</p>
+  <ol>
+    <li>
+      connection status
+    </li>
+    <li>
+      create to do list
+    </li>
+    <li>
+      cute cat icon
+    </li>
+    <li>
+      image and link handling
+      <ul>
+        <li>sanitization. disallow html tags</li>
+      </ul>
+    </li>
+    <li>
+      persuading browsers not to cache page/script files
+    </li>
+    <li>
+      send response to client when message is received. show pending then fail if no response
+   </li>
+    <li>
+      migrate away from Ratchet websockets framework to Workerman
+   </li>
+    <li>
+      timestamps
+   </li>
+    <li>
+      font color changes based on darkness of the background
+   </li>
+    <li>
+      fix chrome extention going idle and disconnecting
+   </li>
+    <li>
+      add colored credits/secret message in console
+   </li>
+    <li>
+      client list or client count
+   </li>
+    <li>
+      send message button icon
+   </li>
+    <li>
+      click to enlarge pictures
+      <ul>
+        <li>added styling to contain large images and enlarge small images</li>
+      </ul>
+   </li>
+    <li>
+      background image
+   </li>
+    <li>
+      allow insertion of new line via shift+enter key press
+   </li>
+    <li>
+      A LOT of css
+   </li>
+    <li>
+      fix new connection msg having different font color then it's user
+   </li>
+    <li>
+      added presistant chat history (optional - backend)
+   </li>
+    <li>
+      clear message btn clears backend history of chat only when chat history is enabled
+   </li>
+    <li>
+      fireworks button?
+   </li>
+    <li>
+      improved message time / added time to history
+      <ul>
+        <li>displayed msg time now based on user's local timezone</li>
+      </ul>
+   </li>
+    <li>
+      added slight animation to buttons
+   </li>
+    <li>
+      Youtube video intergration
+   </li>
+    <li>
+      auto scroll down after loading history
+   </li>
+    <li>
+      countdown to 6 pm
+   </li>
+    <li>
+      when 6PM is reach. launch fireworks
+   </li>
+    <li>
+      update shift+enter key to insert newline where cursor is and not just at end of line
+   </li>
+    <li>
+      added delay to autoscroll down so that it works with gifs and videos
+   </li>
+    <li>
+      flash red textbox animation when trying to send empty message
+   </li>
+    <li>
+      cookies
+      <ul>
+        <li>Set/Get cookie logic</li>
+        <li>save user name when user unselects name textbox</li>
+        <li>save connection ID on initialization</li>
+        <li>websocket: set timer to avoid showing user disconnect on page refresh</li>
+        <li>websocket: added connection logic to receive user's name and id</li>
+        <li>websocket: added additional checks for when a user opens the site in multiple tabs</li>
+      </ul>
+      <li>
+        improve user connectivity / do not show discon/reconnect on user refresh
+      </li>
+   </li>
+    <li>
+      purchase and register domain
+   </li>
+    <li>
+      logic on backend to censor ip addresses when users (dis)connect that are not using usernames
+   </li>
+   <li>
+      hide Tenor API key
+   </li>
+    <li>
+      add id to message, so that when returning, your message appear on the correct side
+   </li>
+   <li>grouped connections to the same user
+    <ul>
+      <li>if a user was to open multiple tabs.</li>
+      <li>each tab is a unique connection and was treated as such</li>
+      <li>Now, they're still independent connections but treated as one user</li>
+    </ul>
+   </li>
+   <li>
+      setup Fail2Ban
+   </li>
+   <li>
+      implement 404 -> redirect to main page
+   </li>
+  </ol>
+</div>
+</div>
+<div class="divModal displayNone imgModal" id="modal">
+    <div class="imgModal" id="divSubmodal">
+      <div id="divImg">
+        <img id="modalImg" loading="lazy" src="">
+      </div>
+    </div>
+</div>
+<div class="aboutMe displayNone" id="aboutMe">
+    <div id="divSubmodal">
+        <img id="modalImg" loading="lazy" src="">
+    </div>
+</div>
+
+</body>
+<script src="https://websocketchat.com/chat2.js?v1.0312.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+</html>
