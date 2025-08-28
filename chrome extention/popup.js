@@ -41,49 +41,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-/* 
-	const firebaseConfig = {
-	  apiKey: "AIzaSyDXiCD83oV7sobKIkRPsMOiDAHWERNFZyY",
-	  authDomain: "chromeextention-c9fd2.firebaseapp.com",
-	  projectId: "chromeextention-c9fd2",
-	  storageBucket: "chromeextention-c9fd2.firebasestorage.app",
-	  messagingSenderId: "508642757127",
-	  appId: "1:508642757127:web:fb71604cfacad338e878a2",
-	  measurementId: "G-YVRN1Z5MLR"
-	};
-	firebase.initializeApp(firebaseConfig);
-
-	const messaging = firebase.messaging();
-
-	Notification.requestPermission().then((permission) => {
-	  if (permission === "granted")
-	  {
-		console.log("Notification permission granted.");
-		messaging.getToken({
-		  vapidKey: "BHMSBk8UlWzIAwIZmPF0LTGniejaGDzmFe4HGKcUTtUXhYUa6sZRd1dHvfnRDgaHfOEQDQuT7JY7HD_jvpf9fPE"
-		}).then((currentToken) => {
-		  if (currentToken)
-		  {
-			console.log("FCM Token:", currentToken);
-			// Send this token to your server for push messaging
-			 chrome.runtime.sendMessage({ action: "sendFireBaseToken",token:currentToken }, (response) => {
-			});
-		  }
-		  else
-		  {
-			console.log("No registration token available. Request permission to generate one.");
-		  }
-		}).catch((err) => {
-		  console.log("An error occurred while retrieving token. ", err);
-		});
-	  }
-	  else
-	  {
-		console.log("Unable to get permission to notify.");
-	  }
-	}); */
-
-
-
-
 });
