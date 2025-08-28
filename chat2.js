@@ -1,5 +1,5 @@
 //  codex: ignore
-    
+
     const type     = {'received':'received', 'sent':'sent'};
     const chatContainer = document.getElementById('chatContainer');
     const log      = document.getElementById('log');
@@ -32,7 +32,6 @@
         };
         
     let cookies = [];
-
     // var colorPicker = new iro.ColorPicker('#picker');
     // var colorPicker = new iro.ColorPicker("#picker", {
     // // Set the size of the color picker
@@ -260,6 +259,12 @@
                     const img = document.createElement('img');
                     img.src = val;
                     img.style = "max-width: 200px; display:block; border-radius: 9px;";
+
+                    const urlParts = val.split('/');
+                    const lastPart = urlParts[urlParts.length - 1];
+                    img.setAttribute('data-gif-id', lastPart);
+
+                    img.alt = "animated gif: "+lastPart;
                     img.addEventListener('click',()=>{openModal(val)})
                     p.appendChild(img);
                 }
@@ -308,7 +313,6 @@
     {
         const data = JSON.parse(mydata??[]);
 
-       // console.log('in message', data);
         if(data.uid == uid)
         {
             type = 'sent';
@@ -320,8 +324,6 @@
         }
         if(data.init )
         {
-           // e("myColorBefore:",myColor);
-          //  e("in init",data);
             myColor = data.color;
             fontColor = data.font;
             id = data.id;
@@ -330,7 +332,7 @@
             setCookie("uid", data.uid);
             setCookie("color", data.color);
             setCookie("font", data.font);
-          //  e("after:",myColor);
+
             if(data.display)
             {
                 startTimer();
@@ -479,7 +481,13 @@
     {
         if(modal.classList.contains('displayNone'))
             modal.classList.remove('displayNone');
+        
+
+        const urlParts = url.split('/');
+        const lastPart = urlParts[urlParts.length - 1];
+        modalImg.setAttribute('data-gif-id', lastPart);
         modalImg.src=url;
+        modalImg.alt=`Select Image ${lastPart} enlarged`;
     }
 
     function closeModal(evt)
@@ -569,7 +577,7 @@
     {
         Swal.fire({
             title: 'Still Working on it',
-            html: 'Here is the repo (may still be private):<br><br>GitHub: <a target="_blank" href="https://github.com/jandrial018/Secure-Web-Socket-Chat">https://github.com/jandrial018/Secure-Web-Socket-Chat</a>',
+            html: 'Here is the public repo of this project:<br><br>GitHub: <a target="_blank" href="https://github.com/jandrial018/SecureWebSocketChat">https://github.com/jandrial018/SecureWebSocketChat</a>',
             confirmButtonText: 'Close'
             });
         //alert("Still Working on it Here is the repo (may still be private):\n\nGitHub: https://github.com/jandrial018/Secure-Web-Socket-Chat");

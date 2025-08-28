@@ -1,12 +1,9 @@
 <!-- codex: ignore -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <title>Secure WebSocket Chat</title>
   <meta charset="utf-8">
-  <!-- <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin> -->
-  <!-- <link rel="icon" href="https://websocketchat.com/favicon.png" sizes="32x32">
-  <link rel="icon" href="https://websocketchat.com/favicon.png" sizes="192x192"> -->
+  <title>Secure WebSocket Chat</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -22,78 +19,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" type="text/css" href="chat2.css" defer>
+    <link rel="stylesheet" type="text/css" href="chat2.css?v=1.011" defer>
 <!-- <link rel="preload" href="/chat2.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/chat2.css"></noscript> -->
   <!-- <link rel="preload" href="https://cdn.jsdelivr.net/dist/index.umd.js" as="script" crossorigin>
    async  -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer async></script>
 </head>
 
 <body>
-  <img 
-  src="/images/socket_bg.png" 
-  alt="" 
-  fetchpriority="high" 
-  decoding="async" 
-  style="position:absolute; width:0; height:0; overflow:hidden; visibility:hidden;">
+  <img src="/images/socket_bg.png" alt="invisible image for caching" fetchpriority="high" decoding="async" style="position:absolute; width:0; height:0; overflow:hidden; visibility:hidden;">
 
   <div class="body">
     <div class="leftside" fetchpriority="high">
       <div class="leftside_in">
-        <div class="heading">
-          <h2>Secure WebSocket Chat</h2>
-          <div class="countdown displayNone">
-            <h3>Time Until 6PM</h3>
-            <span id="timer">00:00:00</span>
-          </div>
-          <div class="div_ext">
-            <a href="javascript:aboutMe();">About Me</a>
-            <a class="ext" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/19mrs6DOnwWgQT8YVOy8jx0zfeWerr-t0/view?usp=sharing">Get The Chrome Extension</a>
-          </div>
-        </div>
-        <div class="toolbar">
-          <div class="statusDiv">    
-            <span id="statusLight" class="tooltip status" title="Connected" style="background-color: rgb(76, 175, 80);">
-              <span id="statusText" class="tooltiptext">Connected</span>
-            </span>
-            <span class="statusLabel" id="label">Connected</span>
-          </div>
-          <div>
-              <span>clients count:</span>
-              <span id="count">0</span>
+        <header>
+          <div class="heading" role="banner">
+            <h1>Secure WebSocket Chat</h1>
+            <div class="countdown displayNone">
+              <h2 class="displayNone"></h2>
+              <h3>Time Until 6PM</h3>
+              <span id="timer">00:00:00</span>
             </div>
-            <div class="leanRight">
-              <button class="tooltip btn_animate" id="btn_fireworks">Fireworks?
-                <span class="tooltiptext">launch fireworks</span>
-              </button>
-              <span class="tooltip">
-                <input type="text" name="name" autocomplete="given-name" placeholder="your Name" />
-              <span class="tooltiptext">A Display Name</span>
+            <div class="div_ext">
+              <a href="javascript:aboutMe();"><p>About Me</p></a>
+              <a class="ext" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/19mrs6DOnwWgQT8YVOy8jx0zfeWerr-t0/view?usp=sharing"><p>Get The Chrome Extension</p></a>
+            </div>
+          </div>
+          <div class="toolbar" role="navigation">
+            <div class="statusDiv">    
+              <span id="statusLight" class="tooltip status" title="Connected" style="background-color: rgb(76, 175, 80);">
+                <span id="statusText" class="tooltiptext">Connected</span>
               </span>
-            <span class="tooltip">
-              <a href="https://websocketchat.com/tenor.html" target="_blank">Gifs
-              <span class="tooltiptext">Search for gifs</span>
-              </a>
-            </span>
-            <button class="btn_clear btn_animate tooltip" onclick="clearMessage()">Clear
-              <span class="tooltiptext">ctrl/cmd + L</span>
-            </button>
-          </div> 
-        </div>
-      <div class="chat-container" id="chatContainer">
+              <span class="statusLabel" lang="en-US" id="label">Connected</span>
+            </div>
+            <div class="clientCount">
+                <!-- <span>clients count:</span>
+                <span id="count">0</span> -->
+                <p>clients count:</p>
+                <p id="count">0</p>
+              </div>
+              <div class="leanRight">
+                <button class="tooltip btn_animate" id="btn_fireworks">Fireworks?
+                  <span class="tooltiptext">launch fireworks</span>
+                </button>
+                <span class="tooltip">
+                  <input type="text" name="name" autocomplete="given-name" aria-label="Your Display name" placeholder="your Name" />
+                  <span class="tooltiptext">A Display Name</span>
+                </span>
+              <span class="tooltip">
+                <a href="https://websocketchat.com/tenor.html" id="gifLink" target="_blank"><p>Gifs</p>
+                <span class="tooltiptext">Search for gifs</span>
+                </a>
+              </span>
+              <button class="btn_clear btn_animate tooltip" onclick="clearMessage()">Clear
+                <span class="tooltiptext">ctrl/cmd + L</span>
+              </button>
+            </div> 
+          </div>
+      </header>
+      <main class="chat-container" tabindex="0" role="main" id="chatContainer"></main>
 
-      </div>
-      <div class="textarea_div">
-        <textarea type="text" class="textarea" id="message" tabindex="0" placeholder="Type a message..." ></textarea>
-        <button class="btn_send btn_animate tooltip" alt="send message" tabindex="0" onclick="sendMessage()">
+      <div class="textarea_div" role="navigation">
+        <textarea type="text" class="textarea" id="message" tabindex="0" aria-label="Text field to send a message" placeholder="Type a message..." ></textarea>
+        <button class="btn_send btn_animate tooltip" alt="send message" aria-label="Send button" tabindex="0" onclick="sendMessage()">
           <span class="tooltiptext">Send Message</span>
           <img fetchpriority="high" alt="send button icon" src="https://websocketchat.com/images/sendIcon.png">
         </button>
       </div>
     </div>
   </div>
-<div class="toDoList">
+<div class="toDoList" tabindex="0" lang="en-US" role="contentinfo">
   <p>To Do List:</p>
   <ol>
     <li>
@@ -295,17 +291,17 @@
 <div class="divModal displayNone imgModal" id="modal">
     <div class="imgModal" id="divSubmodal">
       <div id="divImg">
-        <img id="modalImg" loading="lazy" src="">
+        <img id="modalImg" loading="lazy" alt="selected image enlarged" src="">
       </div>
     </div>
 </div>
-<div class="aboutMe displayNone" id="aboutMe">
+<!-- <div class="aboutMe displayNone" id="aboutMe">
     <div id="divSubmodal">
         <img id="modalImg" loading="lazy" src="">
     </div>
-</div>
+</div> -->
 
 </body>
-<script src="https://websocketchat.com/chat2.js?v1.0312.4"></script>
+<script src="https://websocketchat.com/chat2.js?v1.0314"></script>
 <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
 </html>

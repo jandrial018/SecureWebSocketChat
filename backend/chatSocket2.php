@@ -140,20 +140,15 @@
         $conn->source = $queryParams['source'] ?? null;
         $conn->name   = $queryParams['name']   ?? null;
 
-     //   echo "in init: id:$conn->id\n";
-       // echo "in init: query:$query\n";
 
         if(isset($queryParams['uid']))
         {
-           // echo "uid: {$queryParams['uid']}\n";
             $conn->uid = $queryParams['uid'] ?? null;
         }
         else
         {
             $conn->uid = $conn->id;
         }
-
-       //  echo "uid: {$conn->uid}\n";
 
         if ($conn->source === 'extention')
         {
@@ -182,7 +177,6 @@
         }
         else
         {
-           // echo ("inside color");
             $conn->color = $queryParams['color'];
         }
 
@@ -211,28 +205,25 @@
 
         $wsWorker->clients[$conn->source][$conn->uid][$conn->id]->isConnected = true;
 
-        // if(count($wsWorker->clients[$conn->source][$conn->uid])<2)
-        // {
-            foreach ($wsWorker->clients as $roles)//source = user. extension
+        foreach ($wsWorker->clients as $roles)//source = user. extension
+        {
+            foreach ($roles as $uid => $id)//uid
             {
-                foreach ($roles as $uid => $id)//uid
+                foreach ($id as $key => $client)//id
                 {
-                    foreach ($id as $key => $client)//id
+                    if ($uid != $conn->uid )
                     {
-                        if ($uid != $conn->uid )
-                        {
-                            echo (json_encode($msg2,true));
-                            sendToClient($client, $msg);
-                        } 
-                        else
-                        {
-                            echo (json_encode($msg2,true));
-                            sendToClient($client, $msg2);
-                        }
+                       // echo (json_encode($msg2,true));
+                        sendToClient($client, $msg);
+                    } 
+                    else
+                    {
+                        //echo (json_encode($msg2,true));
+                        sendToClient($client, $msg2);
                     }
                 }
             }
-       // }
+        }
     };
 
     $wsWorker->onMessage = function (TcpConnection $from, $data) use (&$wsWorker)
@@ -243,9 +234,6 @@
             myLog(output(['data'=>$data,$from->getRemoteIp()]));
             return;
         }
-
-        // if(!isset($wsWorker->clients[$from->source][$from->uid][$from->id]))
-        //     $wsWorker->clients[$from->source][$from->uid][$from->id] = $from;
 
         $conn = $wsWorker->clients[$from->source][$from->uid][$from->id];
         $decode = json_decode($data, true);
@@ -360,21 +348,20 @@
             unset($wsWorker->clients[$conn->source][$conn->uid][$conn->id]);
             if (isset($conn->source) && $conn->source === 'extention')
             {
-                
                 return;
             }
 
             if(count($wsWorker->clients[$conn->source][$conn->uid])<1)
             {
                 unset($wsWorker->clients[$conn->source][$conn->uid]);
-                $count = count($wsWorker->clients['user'])-1;
+                $count = count($wsWorker->clients['user']);
                 $msg = [
+                    'count'   => $count,
                     'closed'  => 'closed',
                     'source'  => $conn->source ?? '',
                     'name'    => $conn->name ?? censorIp($conn->getRemoteIp()),
                     'message' => "has disconnected",
-                    'color'   => $conn->color ?? '#e1f0ff',
-                    'count'   => $count
+                    'color'   => $conn->color ?? '#e1f0ff'
                 ];
 
                 foreach ($wsWorker->clients as $roles)
@@ -399,7 +386,6 @@
                     }
                 }
             }
-           // unset($wsWorker->clients[$from->source][$conn->id]);
         }, [], false);
     };
 
