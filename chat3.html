@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" type="text/css" href="chat2.css?v=1.011" defer>
+    <link rel="stylesheet" type="text/css" href="chat2.css?v=1.0113">
 <!-- <link rel="preload" href="/chat2.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/chat2.css"></noscript> -->
   <!-- <link rel="preload" href="https://cdn.jsdelivr.net/dist/index.umd.js" as="script" crossorigin>
@@ -28,7 +28,7 @@
 </head>
 
 <body>
-  <img src="/images/socket_bg.png" alt="invisible image for caching" fetchpriority="high" decoding="async" style="position:absolute; width:0; height:0; overflow:hidden; visibility:hidden;">
+  <img src="/images/socket_bg40per.jpeg" alt="invisible image for caching" fetchpriority="high" decoding="async" style="position:absolute; width:0; height:0; overflow:hidden; visibility:hidden;">
 
   <div class="body">
     <div class="leftside" fetchpriority="high">
@@ -84,7 +84,7 @@
         <textarea type="text" class="textarea" id="message" tabindex="0" aria-label="Text field to send a message" placeholder="Type a message..." ></textarea>
         <button class="btn_send btn_animate tooltip" alt="send message" aria-label="Send button" tabindex="0" onclick="sendMessage()">
           <span class="tooltiptext">Send Message</span>
-          <img fetchpriority="high" alt="send button icon" src="https://websocketchat.com/images/sendIcon.png">
+          <img fetchpriority="high" alt="send button icon" src="https://websocketchat.com/images/sendIcon75Per.png">
         </button>
       </div>
     </div>
@@ -284,6 +284,15 @@
    </li>
    <li>
       implement 404 -> redirect to main page
+   </li>
+   <li>
+      applied changes to improve accessibility 
+   </li>
+   <li>
+      reduced background image from 1.38 MBs to 50 KBs
+   </li>
+   <li>
+      reduced send icon from 1.52 KBs to 357 Bs
    </li>
   </ol>
 </div>
