@@ -99,6 +99,7 @@
       flex-direction: column;
       align-items: flex-end;
       width: 33%;
+      gap: 5px;
     }
     .ext
     {
@@ -338,102 +339,81 @@
       max-width: 100%;
       max-height: 100%;
     }
-
-    @media only screen and (max-width: 1200px)
+    canvas
     {
-      .body
-      {
-        flex-direction: column;
-      }
-      .toDoList
-      {
-        flex:1;
-        /* min-width: 300px; */
-        margin: auto;
-        max-width: 93%;
-        width: 100%;
-      }
-      .leftside
-      {
-        margin: auto;
-        /* width: 640px; */
-        width: 100%;
-      }
-  }
-  canvas
-  {
-    pointer-events: none;
-  }
-  #btn_fireworks
-  {
-    border-radius: 2px;
-    border-style: solid;
-    border-color: black;
-    background-color: #fa2b2b;
-    /* background-color: rebeccapurple; */
-    box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.15);
-    cursor: pointer;
-    z-index: 10;
-  }
-  .btn_animate
-  {
-    transition: transform 0.1s linear, box-shadow 0.1s linear;
-  }
-  .btn_animate:active
-  {
-    /* transform: translate(4px, 4px); */
-    transform: scale(1.08);
-    box-shadow: 0 0 0 rebeccapurple;
-  }
-  /* .btn_animate:focus
-  {
-    outline: none;
-  } */
-
-  .particle
-  {
-    --x: 0;
-    --y: 0;
-    background-color: rebeccapurple;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 5px;
-    width: 5px;
-    z-index: -1;
-  }
-
-  .particle.move
-  {
-    animation: move 500ms linear forwards;
-  }
-
-  @keyframes move
-  {
-    to
-    {
-      transform: translate(var(--x), var(--y));
+      pointer-events: none;
     }
-    95%
+    #btn_fireworks
     {
-      opacity: 1;
+      border-radius: 2px;
+      border-style: solid;
+      border-color: black;
+      background-color: #fa2b2b;
+      /* background-color: rebeccapurple; */
+      box-shadow: 4px 4px 5px rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      z-index: 10;
     }
-    100%
+    .btn_animate
     {
-      opacity: 0;
+      transition: transform 0.1s linear, box-shadow 0.1s linear;
     }
-  }
+    .btn_animate:active
+    {
+      /* transform: translate(4px, 4px); */
+      transform: scale(1.08);
+      box-shadow: 0 0 0 rebeccapurple;
+    }
+    /* .btn_animate:focus
+    {
+      outline: none;
+    } */
 
-   @keyframes flashRed {
-    0%   { outline: 2.3px solid rgb(244, 29, 29) ;}
-    25%  { outline: 2.3px solid #ffb3b3 ; }
-    50%  { outline: 2.3px solid #de0a0a ; }
-    75%  { outline: 2.3px solid #ffb3b3 ; }
-    100% { outline: 2.3px solid #de0a0a ; }
-    /* 100% { outline: 1px solid rgb(118, 118, 118); } */
-  }
+    .particle
+    {
+      --x: 0;
+      --y: 0;
+      background-color: rebeccapurple;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 5px;
+      width: 5px;
+      z-index: -1;
+    }
 
-  .flash-alert {
-    animation: flashRed 1s ease-in-out 0s 1;
-  }
+    .particle.move
+    {
+      animation: move 500ms linear forwards;
+    }
+
+    @keyframes move
+    {
+      to
+      {
+        transform: translate(var(--x), var(--y));
+      }
+      95%
+      {
+        opacity: 1;
+      }
+      100%
+      {
+        opacity: 0;
+      }
+    }
+
+    @keyframes flashRed {
+      0%   { outline: 2.3px solid rgb(244, 29, 29) ;}
+      25%  { outline: 2.3px solid #ffb3b3 ; }
+      50%  { outline: 2.3px solid #de0a0a ; }
+      75%  { outline: 2.3px solid #ffb3b3 ; }
+      100% { outline: 2.3px solid #de0a0a ; }
+      /* 100% { outline: 1px solid rgb(118, 118, 118); } */
+    }
+
+    .flash-alert
+    {
+      animation: flashRed 1s ease-in-out 0s 1;
+    }

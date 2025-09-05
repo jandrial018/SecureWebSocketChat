@@ -1,0 +1,38 @@
+
+    @media only screen and (max-width: 1200px)
+    {
+      .body
+      {
+        flex-direction: column;
+         margin: 20px 8px 0 8px;
+      }
+      .toDoList
+      {
+        flex:1;
+        margin: auto;
+        max-width: 93%;
+        width: 100%;
+      }
+      .leftside
+      {
+        margin: auto;
+        /* width: 640px; */
+        width: 100%;
+      }
+      .leanRight input
+      {
+        width: 60px;
+      }
+      .statusDiv
+      {
+        width: auto;
+      }
+      .heading
+      {
+        padding: 0;
+      }
+      .ext
+      {
+        width: max-content;
+      }
+  }

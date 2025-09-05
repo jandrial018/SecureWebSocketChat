@@ -17,14 +17,14 @@
   <meta name="twitter:description" content="A secure, real-time chat application powered by WebSockets." />
   <meta name="twitter:image" content="https://websocketchat.com/images/socket_bg.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Secure, Anonymous, Proxied WebSocket chat for chatting with friends. Send Gifs, imgages and videos">
 
-
-    <link rel="stylesheet" type="text/css" href="chat2.css?v=1.0113">
+    <link rel="stylesheet" type="text/css" href="chat2.css?v=1.0114">
+    <link rel="stylesheet" type="text/css" href="chat2_mobile.css?0.01">
 <!-- <link rel="preload" href="/chat2.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/chat2.css"></noscript> -->
   <!-- <link rel="preload" href="https://cdn.jsdelivr.net/dist/index.umd.js" as="script" crossorigin>
    async  -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer async></script>
 </head>
 
 <body>
@@ -54,8 +54,6 @@
               <span class="statusLabel" lang="en-US" id="label">Connected</span>
             </div>
             <div class="clientCount">
-                <!-- <span>clients count:</span>
-                <span id="count">0</span> -->
                 <p>clients count:</p>
                 <p id="count">0</p>
               </div>
@@ -126,9 +124,6 @@
       clear cookies button
    </li>
     <li>
-      reduce file size of background image
-   </li>
-    <li>
       fail2ban is working, but Ban is being circumvented by DNS proxy. investigate
    </li>
     <li>
@@ -136,6 +131,12 @@
    </li>
     <li>
       encode/encrypt user ids to avoid id guessing and impostering 
+   </li>
+    <li>
+      Improve Mobile styling
+   </li>
+    <li>
+      Minify JS
    </li>
     <li>
       ....
@@ -286,6 +287,9 @@
       implement 404 -> redirect to main page
    </li>
    <li>
+      created a public repo
+   </li>
+   <li>
       applied changes to improve accessibility 
    </li>
    <li>
@@ -293,6 +297,12 @@
    </li>
    <li>
       reduced send icon from 1.52 KBs to 357 Bs
+   </li>
+   <li>
+      <s>decided to split script into organized chucks. you can still find the whole original script in chat2.js</s>
+   </li>
+   <li>
+      adjust styling for mobile and acheived a score of 100% from <a href="https://pagespeed.web.dev/analysis/https-websocketchat-com/sugk601tha?form_factor=desktop">pagespeed.web.dev</a>
    </li>
   </ol>
 </div>
@@ -310,7 +320,18 @@
     </div>
 </div> -->
 
+
+   <!-- V chat2.js in its parts V -->
+  <!-- <script src="https://websocketchat.com/js/varibles.js"></script>
+  <script src="https://websocketchat.com/js/websocket.js"></script>
+  <script src="https://websocketchat.com/js/fireworks.js"></script>
+  <script src="https://websocketchat.com/js/addevent.js"></script>
+  <script src="https://websocketchat.com/js/main.js"></script> -->
+  
 </body>
-<script src="https://websocketchat.com/chat2.js?v1.0314"></script>
-<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+   <!-- for about me / will recreate and replace -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <!-- for fireworks -->
+   <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+<script src="https://websocketchat.com/chat2.js?v1.03199"></script>
 </html>
