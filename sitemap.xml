@@ -11,6 +11,11 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://websocketchat.com/404.html</loc>
+    <lastmod>2025-09-08</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://websocketchat.com/sitemap.html</loc>
     <lastmod>2025-09-05</lastmod>
     <priority>0.40</priority>

@@ -681,3 +681,24 @@
         }
     }
 
+   const myStyle = "background-color: green; color: black; padding: 0px; border-radius: 0px;text-align: justify; font-size: large;";
+    const cat1 = "    |\__/,|   (`\\ \n"+
+                 "  _.|o o  |_   ) ) \n"+
+                 "-(((---(((--------";
+
+    const cat2 = "  \\    /\\                          /\\    / " +"\n" +
+                "   )  ( ')          No            (' )  (  "    +"\n" +
+                "  (  /  )         Error            (  \\  ) "    +"\n" +
+                "   \\(__)|          Here            |(__)/  "   +"\n"
+                "                      ";
+
+    var cat3 = "                                         "+"\n"+
+            "  \\    /\\         No             /\\    / " +"\n" +
+            "   )  ( ')        Error         (' )  (  "    +"\n" +
+            "  (  /  )         Here           (  \\  ) "    +"\n" +
+            "   \\(__)|         😋             |(__)/ "   +"\n"+
+            "_________________________________________";
+
+
+    //console.log("%c"+cat2+"                   😋                     ", myStyle);
+    console.log("%c"+cat3, myStyle);
